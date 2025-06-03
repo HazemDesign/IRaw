@@ -9,6 +9,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fix for GitHub Pages infinite reload -->
+    <script>
+    // Detect if we're on GitHub Pages and fix base paths
+    if (window.location.hostname.includes('github.io')) {
+        // Register service worker to intercept fetch requests for HTML navigation
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed: ', err));
+            });
+        }
+
+        // Fix all links in the document after it loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get repo name from URL path
+            const pathSegments = window.location.pathname.split('/');
+            const repoName = pathSegments[1];
+            
+            // Fix all links
+            const allLinks = document.querySelectorAll('a[href]');
+            allLinks.forEach(link => {
+                // Only process relative links that don't start with / or # or http
+                if (!link.href.startsWith('http') && !link.getAttribute('href').startsWith('/') && !link.getAttribute('href').startsWith('#')) {
+                    link.href = `/${repoName}/${link.getAttribute('href')}`;
+                }
+            });
+        });
+    }
+    </script>
 </head>
 <body>
 
