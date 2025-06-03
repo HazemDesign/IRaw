@@ -1,4 +1,15 @@
-// Reference camera data from product-details.js
+// Handle GitHub Pages base URL
+const getBaseUrl = () => {
+    // Get the repository name from the URL if on GitHub Pages
+    const pathSegments = window.location.pathname.split('/');
+    // If on GitHub Pages (contains repo name in URL path)
+    if (window.location.hostname.includes('github.io')) {
+        return '/' + pathSegments[1] + '/'; // Returns '/repo-name/'
+    }
+    return '/'; // Local development
+};
+
+const BASE_URL = getBaseUrl();
 
 // Function to display cameras in a horizontal showcase
 function displayCamerasShowcase() {
@@ -75,13 +86,13 @@ function displayAccessoriesShowcase() {
     });
 }
 
-// Function to navigate to product details page
+// Function to navigate to product details page with correct base URL
 function navigateToProductDetails(index) {
     // Store the selected camera index in localStorage
     localStorage.setItem('selectedCameraIndex', index);
     
-    // Redirect to the product details page
-    window.location.href = 'product-details.html';
+    // Redirect to the product details page with proper base URL
+    window.location.href = BASE_URL + 'product-details.html';
 }
 
 // Initialize the page

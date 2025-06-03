@@ -1,3 +1,16 @@
+// Handle GitHub Pages base URL
+const getBaseUrl = () => {
+    // Get the repository name from the URL if on GitHub Pages
+    const pathSegments = window.location.pathname.split('/');
+    // If on GitHub Pages (contains repo name in URL path)
+    if (window.location.hostname.includes('github.io')) {
+        return '/' + pathSegments[1] + '/'; // Returns '/repo-name/'
+    }
+    return '/'; // Local development
+};
+
+const BASE_URL = getBaseUrl();
+
 const camera = [
     {
       name: "Canon EOS R5",
@@ -208,7 +221,7 @@ function loadProductDetails() {
             productContainer.innerHTML = `
                 <div class="error-message">
                     <h2>No camera selected</h2>
-                    <p>Please select a camera from our collection below or return to the <a href="index.html">home page</a>.</p>
+                    <p>Please select a camera from our collection below or return to the <a href="${BASE_URL}index.html">home page</a>.</p>
                 </div>
                 <div class="product-showcase" id="cameraSuggestions"></div>
             `;
@@ -303,7 +316,7 @@ function rentCamera(camera) {
     });
     
     // Redirect back to the main page
-    window.location.href = 'index.html';
+    window.location.href = BASE_URL + 'index.html';
 }
 
 // Initialize the page
