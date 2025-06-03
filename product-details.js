@@ -202,9 +202,44 @@ function loadProductDetails() {
     const selectedIndex = localStorage.getItem('selectedCameraIndex');
     
     if (selectedIndex === null) {
-        // Redirect back to the main page if no camera is selected
-        window.location.href = 'index.html';
-        return;
+        // Instead of redirecting, show a message and display all cameras
+        const productContainer = document.querySelector('.product-container');
+        if (productContainer) {
+            productContainer.innerHTML = `
+                <div class="error-message">
+                    <h2>No camera selected</h2>
+                    <p>Please select a camera from our collection below or return to the <a href="index.html">home page</a>.</p>
+                </div>
+                <div class="product-showcase" id="cameraSuggestions"></div>
+            `;
+            
+            // Display camera suggestions
+            const cameraSuggestions = document.getElementById('cameraSuggestions');
+            camera.slice(0, 4).forEach((cam, index) => {
+                const cameraCard = document.createElement('div');
+                cameraCard.className = 'product-card';
+                
+                cameraCard.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${cam.image}" alt="${cam.name}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3>${cam.name}</h3>
+                        <p>$${cam.pricePerDay} per day</p>
+                    </div>
+                `;
+                
+                // Add click event to select this camera
+                cameraCard.addEventListener('click', () => {
+                    localStorage.setItem('selectedCameraIndex', index);
+                    location.reload();
+                });
+                
+                cameraSuggestions.appendChild(cameraCard);
+            });
+            
+            return;
+        }
     }
     
     const selectedCamera = camera[selectedIndex];
