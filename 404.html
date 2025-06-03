@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Script to redirect to correct GitHub Pages URL
+        (function() {
+            // Get the repository name from the URL if on GitHub Pages
+            const isGitHubPages = location.hostname.includes('github.io');
+            if (isGitHubPages) {
+                const pathSegments = window.location.pathname.split('/');
+                const repoName = pathSegments[1];
+                
+                // If this is a sub-path in the repository, fix it
+                if (pathSegments.length > 2) {
+                    // Remove the repo name from the path for processing
+                    let targetPath = window.location.pathname.substring(repoName.length + 1);
+                    
+                    // If path ends with / or has no extension, assume it needs index.html
+                    if (targetPath.endsWith('/') || !targetPath.includes('.')) {
+                        if (!targetPath.endsWith('/')) {
+                            targetPath += '/';
+                        }
+                        targetPath += 'index.html';
+                    }
+                    
+                    // Redirect to the main page with the repo name
+                    window.location.replace('/' + repoName + targetPath);
+                } else {
+                    // Redirect to the main page with the repo name
+                    window.location.replace('/' + repoName + '/index.html');
+                }
+            } else {
+                // Redirect to index if on local development
+                window.location.replace('/index.html');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <h1>Page Not Found</h1>
+    <p>Redirecting you to the home page...</p>
+</body>
+</html> 

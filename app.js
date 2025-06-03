@@ -11,6 +11,40 @@ const getBaseUrl = () => {
 
 const BASE_URL = getBaseUrl();
 
+// Debug function to detect and stop infinite reload loops
+(function() {
+    // Only run on GitHub Pages
+    if (!window.location.hostname.includes('github.io')) return;
+    
+    // Check for infinite reload
+    const now = new Date().getTime();
+    const lastReload = sessionStorage.getItem('lastReload');
+    const reloadCount = parseInt(sessionStorage.getItem('reloadCount') || '0');
+    
+    // Update reload tracking
+    sessionStorage.setItem('lastReload', now);
+    sessionStorage.setItem('reloadCount', reloadCount + 1);
+    
+    // If reloading too frequently (less than 2 seconds between reloads)
+    // and we've reloaded more than 3 times, break the cycle
+    if (lastReload && (now - lastReload < 2000) && reloadCount > 3) {
+        console.error('Infinite reload detected! Stopping cycle.');
+        // Add a parameter to the URL to break the loop
+        if (!window.location.search.includes('no_reload=true')) {
+            window.location.search = 'no_reload=true';
+            // Force stop any further execution
+            throw new Error('Breaking infinite reload cycle');
+        }
+    }
+    
+    // Reset counter after 10 seconds of no reloads
+    if (lastReload && (now - lastReload > 10000)) {
+        sessionStorage.setItem('reloadCount', '0');
+    }
+    
+    console.log(`Page load #${reloadCount+1}. URL: ${window.location.href}`);
+})();
+
 // Function to display cameras in a horizontal showcase
 function displayCamerasShowcase() {
     const camerasShowcase = document.getElementById('camerasShowcase');
