@@ -1,0 +1,126 @@
+/* ====== Header Styles ====== */
+.top-header {
+    background-color: var(--color-dark);
+    color: white;
+    padding: 0 clamp(1rem, 5vw, 14rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    margin: 0;
+    padding: 12px 0;
+    height: auto;
+    width: clamp(80px, 10vw, 100px);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Navigation */
+.desktop-nav {
+    display: flex;
+}
+
+.nav-links {
+    display: flex;
+    gap: clamp(15px, 2vw, 30px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+    display: inline-block;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle, 
+.header-right {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .menu-toggle, 
+    .header-right {
+        display: block;
+    }
+    
+    .top-header {
+        padding: 0 1rem;
+    }
+    
+    .logo-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .desktop-nav.show {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-dark);
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    
+    .desktop-nav.show .nav-links {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .desktop-nav.show .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .desktop-nav.show .nav-links a {
+        padding: 12px 0;
+        display: block;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+} 

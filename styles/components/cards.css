@@ -1,0 +1,72 @@
+/* ====== Camera Card Components ====== */
+.camera-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.camera-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    border-color: rgba(255, 179, 27, 0.3);
+}
+
+/* View details overlay */
+.camera-card:after {
+    content: "View Details";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.camera-card:hover:after {
+    opacity: 1;
+}
+
+.camera-card:hover .camera-image {
+    opacity: 0.6;
+}
+
+.camera-image {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    background-color: white;
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.camera-card h3 {
+    margin: 1.2rem 1.5rem 0.5rem;
+    font-weight: 600;
+    color: var(--color-headers);
+    font-size: 1.1rem;
+}
+
+.price {
+    margin: 0 1.5rem 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    padding-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+/* Remove rental controls and add to cart button */
+.rental-controls, .add-to-cart-btn {
+    display: none;
+} 

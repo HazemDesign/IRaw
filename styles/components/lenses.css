@@ -1,0 +1,89 @@
+/* ====== Compatible Lenses ====== */
+.compatible-lenses-section {
+    margin-top: 3rem;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.compatible-lenses-section h2 {
+    color: var(--color-headers);
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+}
+
+.compatible-lenses-section p {
+    margin-bottom: 2rem;
+    color: var(--color-body);
+}
+
+/* Lens Grid */
+.lenses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Lens Card */
+.lens-card {
+    border: 1px solid var(--color-grey);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lens-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.lens-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 1rem;
+}
+
+.lens-info {
+    padding: 1rem;
+}
+
+.lens-info h4 {
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+    color: var(--color-headers);
+    font-size: 1rem;
+}
+
+.lens-price {
+    color: var(--color-primary);
+    margin: 0 0 1rem;
+    font-weight: 500;
+}
+
+.lens-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.lens-checkbox {
+    margin-right: 0.5rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .lenses-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    
+    .lens-image {
+        height: 150px;
+    }
+} 

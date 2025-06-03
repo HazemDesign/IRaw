@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories - TOT Rental</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="top-header">
+    <a href="index.html">
+        <img src="img/logo.png" alt="TOT Rental Logo" class="logo">
+    </a>
+    <nav class="desktop-nav">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="All-Products.html">All Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="category-hero">
+        <div class="hero-content">
+            <h1>Accessories</h1>
+            <p>Tripods, gimbals, lights, and more for your photography setup</p>
+        </div>
+    </section>
+    
+    <section class="products-section">
+        <div class="filter-container">
+            <h3 class="filter-title">Filters</h3>
+            <div class="filter-group">
+                <label>Category</label>
+                <select id="categoryFilter">
+                    <option value="all">All Accessories</option>
+                    <option value="Tripod">Tripods</option>
+                    <option value="Gimbal">Gimbals</option>
+                    <option value="Light">Lighting</option>
+                    <option value="Memory">Memory Cards</option>
+                    <option value="Battery">Batteries</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort By</label>
+                <select id="sortFilter">
+                    <option value="priceAsc">Price: Low to High</option>
+                    <option value="priceDesc">Price: High to Low</option>
+                    <option value="nameAsc">Name: A to Z</option>
+                    <option value="nameDesc">Name: Z to A</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="accessoriesContainer" class="products-grid"></div>
+    </section>
+</main>
+
+<script src="product-details.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('accessoriesContainer');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        
+        function displayAccessories(filters = {}) {
+            container.innerHTML = '';
+            
+            let filteredAccessories = [...accessories];
+            
+            // Apply category filter
+            if (filters.category && filters.category !== 'all') {
+                filteredAccessories = filteredAccessories.filter(accessory => {
+                    return accessory.category === filters.category;
+                });
+            }
+            
+            // Apply sorting
+            if (filters.sort) {
+                switch(filters.sort) {
+                    case 'priceAsc':
+                        filteredAccessories.sort((a, b) => a.pricePerDay - b.pricePerDay);
+                        break;
+                    case 'priceDesc':
+                        filteredAccessories.sort((a, b) => b.pricePerDay - a.pricePerDay);
+                        break;
+                    case 'nameAsc':
+                        filteredAccessories.sort((a, b) => a.name.localeCompare(b.name));
+                        break;
+                    case 'nameDesc':
+                        filteredAccessories.sort((a, b) => b.name.localeCompare(a.name));
+                        break;
+                }
+            }
+            
+            filteredAccessories.forEach(accessory => {
+                const accessoryCard = document.createElement('div');
+                accessoryCard.className = 'camera-card';
+                
+                accessoryCard.innerHTML = `
+                    <img src="${accessory.image}" alt="${accessory.name}" class="camera-image">
+                    <h3>${accessory.name}</h3>
+                    <p class="price">$${accessory.pricePerDay} per day</p>
+                `;
+                
+                container.appendChild(accessoryCard);
+            });
+        }
+        
+        // Initialize display
+        displayAccessories();
+        
+        // Add event listeners for filters
+        categoryFilter.addEventListener('change', () => {
+            displayAccessories({
+                category: categoryFilter.value,
+                sort: sortFilter.value
+            });
+        });
+        
+        sortFilter.addEventListener('change', () => {
+            displayAccessories({
+                category: categoryFilter.value,
+                sort: sortFilter.value
+            });
+        });
+    });
+</script>
+</body>
+</html> 

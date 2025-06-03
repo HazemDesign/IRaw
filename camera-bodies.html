@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Bodies - TOT Rental</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="top-header">
+    <a href="index.html">
+        <img src="img/logo.png" alt="TOT Rental Logo" class="logo">
+    </a>
+    <nav class="desktop-nav">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="All-Products.html">All Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="category-hero">
+        <div class="hero-content">
+            <h1>Camera Bodies</h1>
+            <p>Professional cameras for photography and videography</p>
+        </div>
+    </section>
+    
+    <section class="products-section">
+        <div class="filter-container">
+            <h3 class="filter-title">Filters</h3>
+            <div class="filter-group">
+                <label>Brand</label>
+                <select id="brandFilter">
+                    <option value="all">All Brands</option>
+                    <option value="Canon">Canon</option>
+                    <option value="Sony">Sony</option>
+                    <option value="Nikon">Nikon</option>
+                    <option value="Fujifilm">Fujifilm</option>
+                    <option value="Panasonic">Panasonic</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort By</label>
+                <select id="sortFilter">
+                    <option value="priceAsc">Price: Low to High</option>
+                    <option value="priceDesc">Price: High to Low</option>
+                    <option value="nameAsc">Name: A to Z</option>
+                    <option value="nameDesc">Name: Z to A</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="cameraBodiesContainer" class="products-grid"></div>
+    </section>
+</main>
+
+<script src="product-details.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('cameraBodiesContainer');
+        const brandFilter = document.getElementById('brandFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        
+        function displayCameras(filters = {}) {
+            container.innerHTML = '';
+            
+            let filteredCameras = [...camera];
+            
+            // Apply brand filter
+            if (filters.brand && filters.brand !== 'all') {
+                filteredCameras = filteredCameras.filter(cam => {
+                    return cam.tags && cam.tags.includes(filters.brand);
+                });
+            }
+            
+            // Apply sorting
+            if (filters.sort) {
+                switch(filters.sort) {
+                    case 'priceAsc':
+                        filteredCameras.sort((a, b) => a.pricePerDay - b.pricePerDay);
+                        break;
+                    case 'priceDesc':
+                        filteredCameras.sort((a, b) => b.pricePerDay - a.pricePerDay);
+                        break;
+                    case 'nameAsc':
+                        filteredCameras.sort((a, b) => a.name.localeCompare(b.name));
+                        break;
+                    case 'nameDesc':
+                        filteredCameras.sort((a, b) => b.name.localeCompare(a.name));
+                        break;
+                }
+            }
+            
+            filteredCameras.forEach((cam, index) => {
+                const cameraCard = document.createElement('div');
+                cameraCard.className = 'camera-card';
+                cameraCard.dataset.index = index;
+                
+                cameraCard.innerHTML = `
+                    <img src="${cam.image}" alt="${cam.name}" class="camera-image">
+                    <h3>${cam.name}</h3>
+                    <p class="price">$${cam.pricePerDay} per day</p>
+                `;
+                
+                cameraCard.addEventListener('click', () => {
+                    localStorage.setItem('selectedCameraIndex', index);
+                    window.location.href = 'product-details.html';
+                });
+                
+                container.appendChild(cameraCard);
+            });
+        }
+        
+        // Initialize display
+        displayCameras();
+        
+        // Add event listeners for filters
+        brandFilter.addEventListener('change', () => {
+            displayCameras({
+                brand: brandFilter.value,
+                sort: sortFilter.value
+            });
+        });
+        
+        sortFilter.addEventListener('change', () => {
+            displayCameras({
+                brand: brandFilter.value,
+                sort: sortFilter.value
+            });
+        });
+    });
+</script>
+</body>
+</html> 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOT Camera Rental</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="top-header">
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  <a href="index.html" class="logo-container">
+    <img src="img/logo.png" alt="IRaw Logo" class="logo">
+  </a>
+  <div class="header-right">
+    <i class="fas fa-search"></i>
+  </div>
+  <nav class="desktop-nav">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="camera-bodies.html">Cameras</a></li>
+      <li><a href="lenses.html">Lenses</a></li>
+      <li><a href="accessories.html">Accessories</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="mobile-navbar">
+  <a href="index.html" class="nav-item active">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </a>
+  <a href="camera-bodies.html" class="nav-item">
+    <i class="fas fa-camera"></i>
+    <span>Cameras</span>
+  </a>
+  <a href="lenses.html" class="nav-item">
+    <i class="fas fa-circle-dot"></i>
+    <span>Lenses</span>
+  </a>
+  <a href="accessories.html" class="nav-item">
+    <i class="fas fa-grip"></i>
+    <span>Accessories</span>
+  </a>
+  <a href="contact.html" class="nav-item">
+    <i class="fas fa-envelope"></i>
+    <span>Contact</span>
+  </a>
+</nav>
+
+<main>
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-content">
+        <h1>Professional Camera Equipment Rental</h1>
+        <p>Get access to top-quality cameras, lenses, and accessories for your next photography or videography project</p>
+        <a href="All-Products.html" class="cta-button">Browse All Equipment</a>
+    </div>
+</section>
+  <section class="category-section">
+    <div class="category-container">
+        <div class="category-card" onclick="window.location.href='camera-bodies.html'">
+            <div class="category-img-container">
+                <img src="https://static.bhphoto.com/images/multiple_images/images500x500/1667349013_IMG_1863646.jpg"  alt="Camera Bodies" class="category-img">
+            </div>
+            <div class="category-info">
+                <h3>Camera Bodies</h3>
+                <p>Professional cameras for photography and videography</p>
+                <button class="category-btn">Browse Cameras</button>
+            </div>
+        </div>
+        
+        <div class="category-card" onclick="window.location.href='lenses.html'">
+            <div class="category-img-container">
+                <img src="https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_sel2470gm_fe_24_70mm_f_2_8_gm_1454496359_1222774.jpg" alt="Lenses" class="category-img">
+            </div>
+            <div class="category-info">
+                <h3>Lenses</h3>
+                <p>Wide selection of professional lenses for every need</p>
+                <button class="category-btn">Browse Lenses</button>
+            </div>
+        </div>
+        
+        <div class="category-card" onclick="window.location.href='accessories.html'">
+            <div class="category-img-container">
+                <img src="https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/angler_bb_re_2436_v2_boombox_rectangle_softbox_with_1737996921_1774137.jpg" alt="Accessories" class="category-img">
+            </div>
+            <div class="category-info">
+                <h3>Accessories</h3>
+                <p>Tripods, gimbals, lights, and more for your setup</p>
+                <button class="category-btn">Browse Accessories</button>
+            </div>
+        </div>
+    
+
+    <!-- Featured Cameras Section -->
+     
+    <section class="showcase-section">
+        <h2 class="section-title">Featured Cameras</h2>
+        <div class="product-showcase" id="camerasShowcase">
+            <!-- Will be populated by JavaScript -->
+        </div>
+        <div class="view-all-container">
+            <a href="camera-bodies.html" class="view-all-btn">View All Cameras</a>
+        </div>
+    </section>
+    
+    <!-- Featured Lenses Section -->
+    <section class="showcase-section">
+        <h2 class="section-title">Professional Lenses</h2>
+        <div class="product-showcase" id="lensesShowcase">
+            <!-- Will be populated by JavaScript -->
+        </div>
+        <div class="view-all-container">
+            <a href="lenses.html" class="view-all-btn">View All Lenses</a>
+        </div>
+    </section>
+    
+    <!-- Featured Accessories Section -->
+    <section class="showcase-section">
+        <h2 class="section-title">Essential Accessories</h2>
+        <div class="product-showcase" id="accessoriesShowcase">
+            <!-- Will be populated by JavaScript -->
+        </div>
+        <div class="view-all-container">
+            <a href="accessories.html" class="view-all-btn">View All Accessories</a>
+        </div>
+    </section>
+</main>
+      
+<script src="product-details.js"></script>
+<script src="app.js"></script>
+<script>
+  // Add active class to current page in mobile navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentLocation = location.href;
+    const navItems = document.querySelectorAll('.mobile-navbar .nav-item');
+    
+    navItems.forEach(item => {
+      if(item.href === currentLocation) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+    
+    // Toggle menu for desktop
+    const menuToggle = document.querySelector('.menu-toggle');
+    const desktopNav = document.querySelector('.desktop-nav');
+    
+    menuToggle.addEventListener('click', function() {
+      desktopNav.classList.toggle('show');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* ====== TOT Camera Rental Website Styles ====== */
+/* Author: TOT Team */
+/* Last updated: 2025-06-03 */
+
+/* 
+ * CSS Organization: Pyramid Approach
+ * ----------------------------------
+ * 1. Base/Variables (global tokens & base styles)
+ * 2. Components (reusable UI components)
+ * 3. Sections (page sections composed of components)
+ * 4. Utilities (helper classes)
+ */
+
+/* Import Design Tokens */
+@import 'variables.css';
+
+/* Import Base Styles */
+@import 'base.css';
+
+/* Import Components */
+@import 'components/header.css';
+@import 'components/navigation.css';
+@import 'components/cards.css';
+@import 'components/cart.css';
+@import 'components/notifications.css';
+@import 'components/product-details.css';
+@import 'components/lenses.css';
+
+/* Import Sections */
+@import 'sections/categories.css';
+@import 'sections/products.css';
+@import 'sections/hero.css';
+@import 'sections/showcase.css';
+
+/* CSS Cascade Layers (Modern Browsers) */
+@layer foundation, components, layouts, utilities;
+
+@layer foundation {
+  /* Design tokens and base styles */
+}
+
+@layer components {
+  /* Reusable UI components */
+}
+
+@layer layouts {
+  /* Page sections and layouts */
+}
+
+@layer utilities {
+  /* Helper classes */
+} 
