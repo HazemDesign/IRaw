@@ -212,6 +212,7 @@ function loadProductDetails() {
                 </div>
                 <div class="product-showcase" id="cameraSuggestions"></div>
             `;
+            
             // Display camera suggestions
             const cameraSuggestions = document.getElementById('cameraSuggestions');
             camera.slice(0, 4).forEach((cam, index) => {
