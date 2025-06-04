@@ -42,63 +42,64 @@
 </head>
 <body>
 
-<header class="top-header">
-  <div class="menu-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  <a href="index.html" class="logo-container">
-    <img src="img/logo.png" alt="IRaw Logo" class="logo">
-  </a>
-  <div class="header-right">
-    <i class="fas fa-search"></i>
-  </div>
-  <nav class="desktop-nav">
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="camera-bodies.html">Cameras</a></li>
-      <li><a href="lenses.html">Lenses</a></li>
-      <li><a href="accessories.html">Accessories</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <header class="top-header">
+    
+    <a href="index.html" class="logo-container">
+      <img src="img/logo.png" alt="IRaw Logo" class="logo">
+    </a>
+  
+    <nav class="desktop-nav">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="./HTML/camera-bodies.html">Cameras</a></li>
+        <li><a href="./HTML/lenses.html">Lenses</a></li>
+        <li><a href="./HTML/accessories.html">Accessories</a></li>
+        <li><a href="./HTML/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-navbar">
+    <a href="index.html" class="nav-item active">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="./HTML/camera-bodies.html" class="nav-item">
+      <i class="fas fa-camera"></i>
+      <span>Cameras</span>
+    </a>
+    <a href="./HTML/lenses.html" class="nav-item">
+      <i class="fas fa-circle-dot"></i>
+      <span>Lenses</span>
+    </a>
+    <a href="./HTML/accessories.html" class="nav-item">
+      <i class="fas fa-grip"></i>
+      <span>Accessories</span>
+    </a>
+    <a href="./HTML/contact.html" class="nav-item">
+      <i class="fas fa-envelope"></i>
+      <span>Contact</span>
+    </a>
   </nav>
-</header>
 
-<!-- Mobile Bottom Navigation -->
-<nav class="mobile-navbar">
-  <a href="index.html" class="nav-item active">
-    <i class="fas fa-home"></i>
-    <span>Home</span>
-  </a>
-  <a href="camera-bodies.html" class="nav-item">
-    <i class="fas fa-camera"></i>
-    <span>Cameras</span>
-  </a>
-  <a href="lenses.html" class="nav-item">
-    <i class="fas fa-circle-dot"></i>
-    <span>Lenses</span>
-  </a>
-  <a href="accessories.html" class="nav-item">
-    <i class="fas fa-grip"></i>
-    <span>Accessories</span>
-  </a>
-  <a href="contact.html" class="nav-item">
-    <i class="fas fa-envelope"></i>
-    <span>Contact</span>
-  </a>
-</nav>
+<!-- Hero Banner -->
+<section class="hero-banner">
+  <div class="hero-banner-img">
+    <img src="img/LogoLarge.png" alt="IRaw Logo" style="width: 200px;">
+  </div>
+  <div class="hero-content">
+    <h1>Professional Camera Equipment Rental</h1>
+    <p>Get access to top-quality cameras, lenses, and accessories for your next photography or videography project</p>
+    <a href="./HTML/camera-bodies.html" class="cta-button">Explore Our Gear</a>
+  </div>
+</section>
 
 <main>
-  <!-- Hero Banner -->
-  <section class="hero-banner">
-    <div class="hero-content">
-        <h1>Professional Camera Equipment Rental</h1>
-        <p>Get access to top-quality cameras, lenses, and accessories for your next photography or videography project</p>
-        <a href="All-Products.html" class="cta-button">Browse All Equipment</a>
-    </div>
-</section>
   <section class="category-section">
+    <h2 class="section-title">Equipment Categories</h2>
     <div class="category-container">
-        <div class="category-card" onclick="window.location.href='camera-bodies.html'">
+        <div class="category-card" onclick="window.location.href='./HTML/camera-bodies.html'">
             <div class="category-img-container">
                 <img src="https://static.bhphoto.com/images/multiple_images/images500x500/1667349013_IMG_1863646.jpg"  alt="Camera Bodies" class="category-img">
             </div>
@@ -109,7 +110,7 @@
             </div>
         </div>
         
-        <div class="category-card" onclick="window.location.href='lenses.html'">
+        <div class="category-card" onclick="window.location.href='./HTML/lenses.html'">
             <div class="category-img-container">
                 <img src="https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_sel2470gm_fe_24_70mm_f_2_8_gm_1454496359_1222774.jpg" alt="Lenses" class="category-img">
             </div>
@@ -120,7 +121,7 @@
             </div>
         </div>
         
-        <div class="category-card" onclick="window.location.href='accessories.html'">
+        <div class="category-card" onclick="window.location.href='./HTML/accessories.html'">
             <div class="category-img-container">
                 <img src="https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/angler_bb_re_2436_v2_boombox_rectangle_softbox_with_1737996921_1774137.jpg" alt="Accessories" class="category-img">
             </div>
@@ -130,17 +131,16 @@
                 <button class="category-btn">Browse Accessories</button>
             </div>
         </div>
-    
+    </div>
 
     <!-- Featured Cameras Section -->
-     
     <section class="showcase-section">
         <h2 class="section-title">Featured Cameras</h2>
         <div class="product-showcase" id="camerasShowcase">
             <!-- Will be populated by JavaScript -->
         </div>
         <div class="view-all-container">
-            <a href="camera-bodies.html" class="view-all-btn">View All Cameras</a>
+            <a href="./HTML/camera-bodies.html" class="view-all-btn">View All Cameras</a>
         </div>
     </section>
     
@@ -151,7 +151,7 @@
             <!-- Will be populated by JavaScript -->
         </div>
         <div class="view-all-container">
-            <a href="lenses.html" class="view-all-btn">View All Lenses</a>
+            <a href="./HTML/lenses.html" class="view-all-btn">View All Lenses</a>
         </div>
     </section>
     
@@ -162,35 +162,13 @@
             <!-- Will be populated by JavaScript -->
         </div>
         <div class="view-all-container">
-            <a href="accessories.html" class="view-all-btn">View All Accessories</a>
+            <a href="./HTML/accessories.html" class="view-all-btn">View All Accessories</a>
         </div>
     </section>
+  </section>
 </main>
       
-<script src="product-details.js"></script>
-<script src="app.js"></script>
-<script>
-  // Add active class to current page in mobile navigation
-  document.addEventListener('DOMContentLoaded', function() {
-    const currentLocation = location.href;
-    const navItems = document.querySelectorAll('.mobile-navbar .nav-item');
-    
-    navItems.forEach(item => {
-      if(item.href === currentLocation) {
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
-      }
-    });
-    
-    // Toggle menu for desktop
-    const menuToggle = document.querySelector('.menu-toggle');
-    const desktopNav = document.querySelector('.desktop-nav');
-    
-    menuToggle.addEventListener('click', function() {
-      desktopNav.classList.toggle('show');
-    });
-  });
-</script>
+<script src="JS/product-details.js"></script>
+<script src="JS/app.js"></script>
 </body>
 </html>

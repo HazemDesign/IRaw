@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRaw - Product Details</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="top-header">
+        
+        <a href="../index.html" class="logo-container">
+          <img src="../img/logo.png" alt="IRaw Logo" class="logo">
+        </a>
+        
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./camera-bodies.html">Cameras</a></li>
+            <li><a href="./lenses.html">Lenses</a></li>
+            <li><a href="./accessories.html">Accessories</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+      <!-- Mobile Bottom Navigation -->
+      <nav class="mobile-navbar">
+        <a href="../index.html" class="nav-item">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="./camera-bodies.html" class="nav-item active">
+          <i class="fas fa-camera"></i>
+          <span>Cameras</span>
+        </a>
+        <a href="./lenses.html" class="nav-item">
+          <i class="fas fa-circle-dot"></i>
+          <span>Lenses</span>
+        </a>
+        <a href="./accessories.html" class="nav-item">
+          <i class="fas fa-grip"></i>
+          <span>Accessories</span>
+        </a>
+        <a href="./contact.html" class="nav-item">
+          <i class="fas fa-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+<main>
+    <div class="product-details-container">
+        <div class="product-details">
+            <div class="product-image-container">
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img id="productMainImage" src="" alt="Camera" class="product-image">
+                    </div>
+                    <div class="product-thumbnails" id="productThumbnails">
+                        <!-- Thumbnails will be added by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            <div class="product-info">
+                <h1 id="productName" class="product-title"></h1>
+                <p id="productPrice" class="product-price"></p>
+                
+                <div class="rental-options">
+                    <h2>Rental Options</h2>
+                    <div class="rental-form">
+                        <div class="rental-duration">
+                            <h3>Choose Duration:</h3>
+                            <div class="rental-boxes">
+                                <div class="rental-box" data-hours="12">
+                                    <input type="radio" name="rental-duration" id="rental-12hrs" value="12">
+                                    <label for="rental-12hrs">12 Hours</label>
+                                </div>
+                                <div class="rental-box" data-hours="24">
+                                    <input type="radio" name="rental-duration" id="rental-1day" value="24" checked>
+                                    <label for="rental-1day">1 Day</label>
+                                </div>
+                                <div class="rental-box rental-box-custom" data-hours="custom">
+                                    <input type="radio" name="rental-duration" id="rental-custom" value="custom">
+                                    <label for="rental-custom">Custom</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="customDurationOptions" class="custom-duration-options" style="display: none;">
+                            <div class="form-group">
+                                <label for="rentalDays">Number of Days:</label>
+                                <input type="number" id="rentalDays" min="1" value="1" class="days-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rentalDate">Start Date:</label>
+                            <input type="date" id="rentalDate" class="date-input">
+                        </div>
+                        <div class="total-price">
+                            <span>Total: </span>
+                            <span id="totalPrice"></span>
+                        </div>
+                        <button id="rentNowBtn" class="rent-now-btn">Rent Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-description">
+                    <h2>Description</h2>
+                    <p id="productDescription">This professional equipment is perfect for photography enthusiasts and professionals alike. With its advanced features and exceptional quality, you'll be able to capture stunning photos and videos.</p>
+                    
+                    <h2>Key Features</h2>
+                    <ul id="featuresList" class="features-list">
+                        <!-- Features will be added by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compatible Products Section -->
+        <div id="compatibleProductsSection" class="compatible-products-section">
+            <h2 id="compatibleSectionTitle">Compatible Lenses</h2>
+            <div class="compatible-scroll-container">
+                <button class="scroll-arrow scroll-left" aria-label="Scroll left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="compatible-scroll-wrapper">
+                    <div id="compatibleProducts" class="compatible-products-grid">
+                        <!-- Compatible products will be added by JavaScript -->
+                    </div>
+                </div>
+                <button class="scroll-arrow scroll-right" aria-label="Scroll right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="../JS/product-details.js"></script>
+</body>
+</html> 

@@ -2,21 +2,25 @@
 .top-header {
     background-color: var(--color-dark);
     color: white;
-    padding: 0 clamp(1rem, 5vw, 14rem);
+    padding: 0.8rem clamp(1rem, 5vw, 3rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 3px 12px rgba(0,0,0,0.15);
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
 }
 
 .logo {
-    margin: 0;
-    padding: 12px 0;
-    height: auto;
-    width: clamp(80px, 10vw, 100px);
+    width: 75px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .logo-container {
@@ -31,7 +35,7 @@
 
 .nav-links {
     display: flex;
-    gap: clamp(15px, 2vw, 30px);
+    gap: clamp(20px, 3vw, 40px);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -42,9 +46,9 @@
     text-decoration: none;
     font-weight: 500;
     padding: 8px 0;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     display: inline-block;
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
     position: relative;
 }
 
@@ -57,7 +61,7 @@
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: -4px;
+    bottom: -2px;
     left: 0;
     background-color: var(--color-primary);
     transition: width 0.3s ease;
@@ -87,13 +91,20 @@
     }
     
     .top-header {
-        padding: 0 1rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 0.6rem 1rem;
+        justify-content: center;
     }
     
     .logo-container {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative;
+        left: 0;
+        transform: none;
+    }
+
+    .logo {
+        width: 50px;
     }
     
     .desktop-nav.show {
