@@ -46,6 +46,7 @@ main {
     max-height: calc(100vh - 100px);
     overflow: auto;
     border: 1px solid rgba(234, 236, 239, 0.9);
+    box-sizing: border-box;
 }
 
 .filter-title {
@@ -123,6 +124,7 @@ main {
         max-height: none;
         border-radius: 12px;
         padding: 1.2rem;
+        box-sizing: border-box;
         box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         align-self: center;
     }

@@ -33,25 +33,61 @@ const cameras = [
       description: "The Canon EOS R5 is a high-resolution, high-speed mirrorless camera designed for professional photographers and filmmakers. With 8K video capability and advanced autofocus, it's perfect for versatile shooting situations."
     },
     {
-        name: "Canon EOS R6 Mark II",
-        pricePerDay: 450,
+        name: "Canon EOS 5D Mark IV",
+        pricePerDay: 400,
         images: [
-          "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/canon_eos_r6_mark_ii_1667348713_1733214.jpg",
-          "https://static.bhphoto.com/images/multiple_images/images500x500/1667348143_IMG_1863620.jpg",
-          "https://static.bhphoto.com/images/multiple_images/images500x500/1667348143_IMG_1863627.jpg",
-          "https://static.bhphoto.com/images/multiple_images/images500x500/1667348143_IMG_1863628.jpg"
+            "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/canon_eos_5d_mark_iv_1561852319_1274705.jpg",
+            "https://static.bhphoto.com/images/multiple_images/images500x500/1566492484_IMG_674215.jpg",
+            "https://static.bhphoto.com/images/multiple_images/images500x500/1566492484_IMG_674216.jpg"
+            
         ],
         features: [
-          "24.2MP Full-Frame CMOS Sensor",
-          "DIGIC X Image Processor",
-          "ISO Range: 100-102400 (Expandable to 204800)",
-          "5-Axis In-Body Image Stabilization",
-          "4K60p 10-Bit Video Recording",
-          "40 fps Electronic Shutter"
+            "30.4MP Full-Frame CMOS Sensor",
+            "DIGIC 6+ Image Processor",
+            "ISO Range: 100-32000 (Expandable to 102400)",
+            "61-Point AF System"
+        ],
+        mount: "Canon EF",
+        tags: ["Canon", "5D Mark IV", "Full-Frame", "30.4MP", "61-Point AF", "DIGIC 6+"],
+        description: "The Canon EOS 5D Mark IV is a professional full-frame DSLR camera known for its high-resolution image quality and versatile shooting capabilities. It's ideal for landscape, portrait, and event photography."
+    },
+    {
+        name: "Canon EOS R",
+        pricePerDay: 300,
+        images: [
+            "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/canon_3075c002_eos_r_mirrorless_camera_1536120359_1433710.jpg",
+            "https://static.bhphoto.com/images/multiple_images/images500x500/1536120910_IMG_1061041.jpg",
+            "https://static.bhphoto.com/images/multiple_images/images500x500/1536120910_IMG_1061042.jpg"
+        ],
+        features: [
+            "24.2MP Full-Frame CMOS Sensor",
+            "DIGIC X Image Processor",
+            "ISO Range: 100-102400 (Expandable to 204800)",
+            "5-Axis In-Body Image Stabilization"
         ],
         mount: "Canon RF",
-        tags: ["Canon", "EOS R6 Mark II", "Mirrorless", "4K", "5-Axis IS", "24.2MP", "Full-Frame"],
-        description: "The Canon EOS R6 Mark II is a versatile full-frame mirrorless camera that excels in both photography and video. With exceptional low-light performance and fast autofocus, it's ideal for event and action photography."
+        tags: ["Canon", "EOS R", "Mirrorless", "24.2MP", "Full-Frame", "DIGIC X", "5-Axis IS"],
+        description: "The Canon EOS R is a high-resolution, high-speed mirrorless camera designed for professional photographers and filmmakers. With 8K video capability and advanced autofocus, it's perfect for versatile shooting situations."
+    },
+    {
+        name: "Canon M50 Mark II",
+        pricePerDay: 300,
+        images: [
+            "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/canon_2680c001_eos_m50_mirrorless_digital_1519599039_1393460.jpg",
+            "https://static.bhphoto.com/images/multiple_images/images500x500/1519599660_IMG_949176.jpg",
+            "https://static.bhphoto.com/images/multiple_images/images500x500/1519599660_IMG_949177.jpg"
+        ],
+        features: [
+            "24.1MP APS-C CMOS Sensor",
+            "DIGIC 8 Image Processor",
+            "ISO Range: 100-25600 (Expandable to 51200)",
+            "5-Axis In-Body Image Stabilization",
+            "4K60p 10-Bit Video Recording",
+            "15 fps Mechanical Shutter"
+        ],
+        mount: "Canon EF-M",
+        tags: ["Canon", "M50 Mark II", "Mirrorless", "4K", "5-Axis IS", "24.1MP", "APS-C"],
+        description: "The Canon M50 Mark II is a compact mirrorless camera designed for beginners and casual photographers. It offers a lightweight, easy-to-use experience with 4K video capabilities and a versatile lens system."
     },
     {
       name: "Sony A7 III",
@@ -76,7 +112,7 @@ const cameras = [
     {
       name: "Nikon Z6 II",
       pricePerDay: 350,
-      images: "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/nikon_z_6_ii_mirrorless_1602636707_1597167.jpg",
+      image: "https://static.bhphoto.com/images/images500x500/1602636707_1597167.jpg",
         features: [
         "24.5MP FX-Format BSI CMOS Sensor",
         "Dual EXPEED 6 Image Processors",
@@ -186,6 +222,14 @@ const lenses = [
         description: "The Canon RF 24-70mm f/2.8L IS USM is a versatile standard zoom lens with a constant f/2.8 aperture. With built-in image stabilization and professional-grade optics, it delivers exceptional image quality across its zoom range."
     },
     {
+        name:"Canon EF 50mm f/1.8 STM",
+        pricePerDay: 100,
+        image: "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/canon_0570c002_ef_50mm_f_1_8_stm_1431301825_1143786.jpg",
+        mount: "Canon EF",
+        tags: ["Canon", "EF 50mm f/1.8 STM", "Prime", "50mm", "f/1.8", "STM"],
+        description: "The Canon EF 50mm f/1.8 STM is a classic portrait lens with a fast f/1.8 aperture. It's perfect for everyday shooting and portraits with beautiful background blur."
+    },
+    {
         name: "Sony FE 24-70mm f/2.8 GM",
         pricePerDay: 150,
         image: "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_sel2470gm_fe_24_70mm_f_2_8_gm_1454496359_1222774.jpg",
@@ -244,14 +288,7 @@ const lenses = [
 ];
 
 const accessories = [
-  {
-      name: "Manfrotto MVH502AH Pro Video Head",
-      pricePerDay: 45,
-      image: "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/manfrotto_mvh502ah_pro_video_head_1416584630_1092523.jpg",
-      category: "Tripod",
-        tags: ["Manfrotto", "MVH502AH", "Tripod", "Video Head"],
-        description: "The Manfrotto MVH502AH Pro Video Head is a professional fluid head designed for video production. It provides smooth pan and tilt movements and supports camera rigs up to 7kg/15.4lbs."
-  },
+ 
   {
       name: "DJI RS 2 Gimbal Stabilizer",
       pricePerDay: 65,
@@ -267,23 +304,7 @@ const accessories = [
       category: "Light",
         tags: ["Aputure", "120d II", "LED", "Light"],
         description: "The Aputure 120d II is a professional daylight-balanced LED light with exceptional output and color accuracy. It's perfect for filmmakers and photographers who need reliable, high-quality lighting."
-    },
-    {
-        name: "Rode VideoMic Pro+",
-        pricePerDay: 25,
-        image: "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/rode_videomic_pro_on_camera_shotgun_1502285388_1361335.jpg",
-        category: "Audio",
-        tags: ["Rode", "VideoMic Pro+", "Microphone", "Audio"],
-        description: "The Rode VideoMic Pro+ is a premium on-camera shotgun microphone that delivers broadcast-quality audio. Its directional pickup pattern focuses on the subject while reducing background noise."
-    },
-    {
-        name: "Atomos Ninja V",
-        pricePerDay: 75,
-        image: "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/atomos_atomnjav01_ninja_v_5_4k_1524583508_1393958.jpg",
-        category: "Monitor/Recorder",
-        tags: ["Atomos", "Ninja V", "Monitor", "Recorder", "4K", "HDR"],
-        description: "The Atomos Ninja V is a 5-inch HDR monitor-recorder that captures 4K video in 10-bit quality. It's the perfect companion for mirrorless and DSLR cameras, enabling higher quality recording than the camera's internal capabilities."
-  }
+    }
 ];
 
 // Function to load product details
@@ -349,7 +370,12 @@ function loadProductDetails() {
     
     // Populate product details - Main image
     const mainImage = document.getElementById('productMainImage');
-    mainImage.src = selectedProduct.image;
+    // Use the first image from the images array if available, otherwise fall back to the single image
+    if (selectedProduct.images && selectedProduct.images.length > 0) {
+        mainImage.src = selectedProduct.images[0];
+    } else {
+        mainImage.src = selectedProduct.image;
+    }
     mainImage.alt = selectedProduct.name;
     
     // Populate thumbnails if multiple images exist
@@ -413,8 +439,11 @@ function loadProductDetails() {
             const productCard = document.createElement('div');
             productCard.className = 'compatible-product-card';
             
+            // Check if the product has an images array or a single image property
+            const productImage = (product.images && product.images.length > 0) ? product.images[0] : product.image;
+            
             productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="compatible-product-img">
+                <img src="${productImage}" alt="${product.name}" class="compatible-product-img">
                 <div class="compatible-product-info">
                     <h3>${product.name}</h3>
                     <p>$${product.pricePerDay}/day</p>
@@ -424,7 +453,14 @@ function loadProductDetails() {
             // Add click event to view this product
             productCard.addEventListener('click', () => {
                 const targetType = productType === 'camera' ? 'lens' : 'camera';
-                window.location.href = `product-details.html?type=${targetType}&id=${index}`;
+                // Find the actual index in the original array
+                let originalArrayIndex;
+                if (targetType === 'lens') {
+                    originalArrayIndex = lenses.findIndex(item => item.name === product.name);
+                } else {
+                    originalArrayIndex = cameras.findIndex(item => item.name === product.name);
+                }
+                window.location.href = `product-details.html?type=${targetType}&id=${originalArrayIndex}`;
             });
             
             compatibleProductsContainer.appendChild(productCard);

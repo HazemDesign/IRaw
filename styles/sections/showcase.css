@@ -76,6 +76,7 @@
 
 .product-info p {
     margin: 0;
+    margin-left: 0rem;
     color: var(--color-primary);
     font-weight: 600;
     font-size: 1.05rem;

@@ -8,6 +8,10 @@
     position: relative;
     cursor: pointer;
     border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .camera-card:hover {
@@ -43,18 +47,21 @@
 }
 
 .camera-image {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: 75%;
     object-fit: contain;
     background-color: white;
-    padding: 0rem  0rem 0rem 0rem;
+    padding: 1rem 0rem 1rem 0rem;
     transition: all 0.3s ease;
+    transform-origin: center;
 }
 
 .camera-card h3 {
     margin: 0rem 1.5rem 0.5rem;
     font-weight: 600;
     color: var(--color-headers);
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .price {

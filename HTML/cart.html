@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - IRaw Camera Rental</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="top-header">
+    <a href="../index.html" class="logo-container">
+      <img src="../img/logoEMT.png" alt="IRaw Logo" class="logo">
+    </a>
+  
+    <nav class="desktop-nav">
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="camera-bodies.html">Cameras</a></li>
+        <li><a href="lenses.html">Lenses</a></li>
+        <li><a href="accessories.html">Accessories</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-navbar">
+    <a href="../index.html" class="nav-item">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="camera-bodies.html" class="nav-item">
+      <i class="fas fa-camera"></i>
+      <span>Cameras</span>
+    </a>
+    <a href="lenses.html" class="nav-item">
+      <i class="fas fa-circle-dot"></i>
+      <span>Lenses</span>
+    </a>
+    <a href="accessories.html" class="nav-item">
+      <i class="fas fa-grip"></i>
+      <span>Accessories</span>
+    </a>
+    <a href="cart.html" class="nav-item active">
+      <i class="fas fa-shopping-cart"></i>
+      <span>Cart</span>
+      <span class="cart-notification">3</span>
+    </a>
+  </nav>
+
+  <main>
+    <div class="page-container">
+      <h1 class="page-title">Your Shopping Cart</h1>
+      
+      <div class="cart-content">
+        <div class="cart-items">
+          <!-- Cart item 1 -->
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <img src="https://static.bhphoto.com/images/multiple_images/images500x500/1667349013_IMG_1863646.jpg" alt="Sony A7 IV">
+            </div>
+            <div class="cart-item-details">
+              <h3>Sony A7 IV</h3>
+              <p class="item-category">Camera Body</p>
+              <div class="rental-period">
+                <p>Rental period: <span>7 days</span></p>
+                <p>From: <span>Jun 10, 2023</span> To: <span>Jun 17, 2023</span></p>
+              </div>
+            </div>
+            <div class="cart-item-price">
+              <p class="price">$250</p>
+              <button class="remove-btn"><i class="fas fa-trash"></i> Remove</button>
+            </div>
+          </div>
+
+          <!-- Cart item 2 -->
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <img src="https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_sel2470gm_fe_24_70mm_f_2_8_gm_1454496359_1222774.jpg" alt="Sony 24-70mm f/2.8 GM">
+            </div>
+            <div class="cart-item-details">
+              <h3>Sony 24-70mm f/2.8 GM</h3>
+              <p class="item-category">Lens</p>
+              <div class="rental-period">
+                <p>Rental period: <span>7 days</span></p>
+                <p>From: <span>Jun 10, 2023</span> To: <span>Jun 17, 2023</span></p>
+              </div>
+            </div>
+            <div class="cart-item-price">
+              <p class="price">$120</p>
+              <button class="remove-btn"><i class="fas fa-trash"></i> Remove</button>
+            </div>
+          </div>
+
+          <!-- Cart item 3 -->
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <img src="https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/angler_bb_re_2436_v2_boombox_rectangle_softbox_with_1737996921_1774137.jpg" alt="LED Light Panel">
+            </div>
+            <div class="cart-item-details">
+              <h3>Softbox Lighting Kit</h3>
+              <p class="item-category">Accessory</p>
+              <div class="rental-period">
+                <p>Rental period: <span>7 days</span></p>
+                <p>From: <span>Jun 10, 2023</span> To: <span>Jun 17, 2023</span></p>
+              </div>
+            </div>
+            <div class="cart-item-price">
+              <p class="price">$85</p>
+              <button class="remove-btn"><i class="fas fa-trash"></i> Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <h2>Order Summary</h2>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>$455</span>
+          </div>
+          <div class="summary-row">
+            <span>Insurance (optional)</span>
+            <span>$50</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax</span>
+            <span>$40.50</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span>$545.50</span>
+          </div>
+          <button class="checkout-btn">Proceed to Checkout</button>
+          <button class="continue-shopping-btn">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+  </main>
+      
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <img src="../img/logoEMT.png" alt="IRaw Logo" class="footer-logo">
+      <p><i class="fas fa-phone"></i> 010 08843121</p>
+      <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/dir/?api=1&destination=30.560680160326%2C31.006777">Talaat Harb, Shibin el Kom, Menofia Governorate, Egypt</a></p>
+
+      </div>
+      <div class="footer-social">
+        <h3>Connect With Us</h3>
+        <div class="social-icons">
+        <a href="https://www.facebook.com/irawforcam" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 IRaw Camera Rental. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../JS/product-details.js"></script>
+  <script src="../JS/app.js"></script>
+</body>
+</html> 
