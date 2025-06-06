@@ -1,15 +1,5 @@
-// Handle GitHub Pages base URL
-const getBaseUrl = () => {
-    // Get the repository name from the URL if on GitHub Pages
-    const pathSegments = window.location.pathname.split('/');
-    // If on GitHub Pages (contains repo name in URL path)
-    if (window.location.hostname.includes('github.io')) {
-        return '/' + pathSegments[1] + '/'; // Returns '/repo-name/'
-    }
-    return '/'; // Local development
-};
-
-const BASE_URL = getBaseUrl();
+// Import data from database.js
+import { cameras, lenses, accessories, BASE_URL } from './database.js';
 
 // Debug function to detect and stop infinite reload loops
 (function() {
@@ -66,16 +56,15 @@ function populateShowcase(containerId, productsArray, limit, productType) {
     
     products.forEach((product, index) => {
         const productCard = document.createElement('div');
-        productCard.className = 'product-card';
+        productCard.className = 'camera-card';
+        
+        // Get the correct image source (handle both 'image' string and 'images' array)
+        const imageSrc = product.images ? product.images[0] : product.image;
         
         productCard.innerHTML = `
-            <div class="product-image-container">
-                <img src="${product.image}" alt="${product.name}" class="product-image">
-            </div>
-            <div class="product-info">
-                <h3>${product.name}</h3>
-                <p>$${product.pricePerDay} per day</p>
-            </div>
+            <img src="${imageSrc}" alt="${product.name}" class="camera-image">
+            <h3>${product.name}</h3>
+            <p class="price">$${product.pricePerDay} / day</p>
         `;
         
         // Add click event to view product details

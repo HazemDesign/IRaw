@@ -135,4 +135,54 @@
     .section-title {
         margin: 2.5rem 0 1.5rem;
     }
+}
+
+/* Mobile view - Modern & Compact Style */
+@media (max-width: 768px) {
+    .category-card {
+        min-width: 160px;
+        max-width: 45%;
+        transition: all 0.3s ease;
+    }
+    
+    .category-img-container {
+        height: 140px;
+        padding: 0.5rem;
+    }
+    
+    .category-info {
+        padding: 1rem 0.8rem;
+    }
+    
+    .category-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .category-info p {
+        display: none;
+    }
+    
+    .category-btn {
+        display: none;
+    }
+    
+    .category-container {
+        gap: 1rem;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+    .category-card {
+        min-width: 130px;
+    }
+    
+    .category-img-container {
+        height: 120px;
+    }
+    
+    .category-info h3 {
+        font-size: 1rem;
+    }
 } 

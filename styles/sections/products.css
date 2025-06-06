@@ -137,4 +137,47 @@ main {
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
+}
+
+/* Enhanced mobile styles for products grid and filters */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 10px;
+    }
+    
+    .filter-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 15px;
+        margin-bottom: 15px;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    
+    .filter-title {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .filter-group {
+        width: calc(50% - 5px);
+        min-width: 140px;
+        padding-bottom: 0.8rem;
+        margin-bottom: 0;
+    }
+    
+    .filter-group select {
+        width: 100%;
+        padding: 8px;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
 } 

@@ -22,7 +22,27 @@
     display: none; /* Chrome, Safari, Opera */
 }
 
-/* Product Card */
+/* Camera cards inside product showcase need specific styling */
+.product-showcase .camera-card {
+    min-width: 280px;
+    max-width: 350px;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    padding: 1rem;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-showcase .camera-card .camera-image {
+    height: 180px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Keep the original product-card style for backward compatibility */
 .product-card {
     min-width: 280px;
     max-width: 350px;
@@ -118,9 +138,18 @@
         gap: 1rem;
     }
     
+    .product-showcase .camera-card,
     .product-card {
         min-width: 220px;
-        max-width: 300px;
+        max-width: 250px;
+    }
+    
+    .product-showcase .camera-card {
+        height: 280px;
+    }
+    
+    .product-showcase .camera-card .camera-image {
+        height: 150px;
     }
     
     .product-image-container {
@@ -142,9 +171,18 @@
 }
 
 @media (max-width: 480px) {
+    .product-showcase .camera-card,
     .product-card {
         min-width: 180px;
         max-width: 250px;
+    }
+    
+    .product-showcase .camera-card {
+        height: 240px;
+    }
+    
+    .product-showcase .camera-card .camera-image {
+        height: 120px;
     }
     
     .product-image-container {

@@ -1,0 +1,55 @@
+# IRaw Camera Rental Website - Context Summary
+
+## Project Overview
+IRaw Camera Rental is a website for renting professional camera equipment including camera bodies, lenses, and accessories.
+
+## Website Structure
+- Single page application with navigation between different product categories
+- Main sections: Home, Cameras, Lenses, Accessories, Cart
+- Mobile-friendly with responsive design and dedicated mobile navigation
+
+## Key Files
+
+### HTML Files
+- index.html - Main homepage
+- HTML/camera-bodies.html - Displays all camera products
+- HTML/lenses.html - Displays all lens products
+- HTML/accessories.html - Displays all accessory products
+- HTML/product-details.html - Shows detailed information about a specific product
+- HTML/cart.html - Shows items in cart (currently static)
+
+### JavaScript Files
+- JS/app.js - Main application logic and homepage setup
+- JS/database.js - Contains all product data (cameras, lenses, accessories)
+- JS/product-details.js - Handles product detail page functionality
+
+### CSS Files
+- styles/index.css - Main stylesheet for the entire site
+
+## Data Structure
+- Products are stored in arrays in database.js
+- Each product has properties like name, price, images, features, mount, tags, description
+- Mount property is used to match compatible cameras and lenses
+
+## Current Functionality
+- Browse products by category
+- View detailed product information
+- See compatible products (cameras that work with specific lenses and vice versa)
+- Basic rental duration and date selection
+- Static cart page (no actual functionality yet)
+
+## Missing Functionality
+- Actual cart implementation (add/remove items, storage)
+- User authentication
+- Checkout process
+- Product search and filtering
+- Actual payment processing
+- Order management
+
+## Technical Notes
+- GitHub Pages compatibility is implemented with special handling
+- Uses vanilla JavaScript (no frameworks)
+- Data is stored directly in JS files (no backend/database)
+- Responsive design for mobile and desktop
+- Uses Font Awesome for icons
+- Uses Poppins font from Google Fonts 
