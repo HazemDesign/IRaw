@@ -80,3 +80,28 @@ img {
         margin-bottom: 1.5rem;
     }
 } 
+
+/* Extra small devices (phones under 
+375px) */
+@media (max-width: 
+375px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+} 

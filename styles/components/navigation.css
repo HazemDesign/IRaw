@@ -89,3 +89,29 @@
         font-size: 0.65rem;
     }
 } 
+
+/* Extra small devices (phones under 
+375px) */
+@media (max-width: 
+375px) {
+    .mobile-navbar {
+        padding: 5px 0 5px;
+    }
+    
+    .nav-item {
+        padding: 5px 0;
+    }
+    
+    .nav-item i {
+        font-size: 1rem;
+    }
+    
+    .nav-item span {
+        font-size: 0.6rem;
+    }
+    
+    .nav-item.active::after {
+        width: 4px;
+        height: 4px;
+    }
+} 

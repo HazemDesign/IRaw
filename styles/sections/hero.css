@@ -5,9 +5,9 @@
     background-color: var(--color-dark);
     background-image: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
     color: white;
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
     text-align: center;
-    margin: 1rem auto 3rem;
+    margin: 1rem auto 2rem;
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -167,5 +167,49 @@
     
     .category-hero p {
         font-size: 14px;
+    }
+} 
+
+/* Extra small devices (phones under 
+375px) */
+@media (max-width: 
+375px) {
+    .hero-banner {
+        padding: 5rem 0;
+    }
+    
+    .hero-banner-img img {
+        max-width: 150px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+        border-radius: 30px;
+    }
+    
+    .category-hero {
+        padding: 10px;
+        margin: 0.5rem auto 1rem;
+        border-radius: 8px;
+    }
+    
+    .category-hero h1 {
+        font-size: 18px;
+    }
+    
+    .category-hero p {
+        font-size: 12px;
     }
 } 

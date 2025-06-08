@@ -1,5 +1,7 @@
 // Import data from database.js
 import { cameras, lenses, accessories, BASE_URL } from './database.js';
+// Import utility functions
+import { handleImageError } from './utils.js';
 
 // Debug function to detect and stop infinite reload loops
 (function() {
@@ -61,11 +63,26 @@ function populateShowcase(containerId, productsArray, limit, productType) {
         // Get the correct image source (handle both 'image' string and 'images' array)
         const imageSrc = product.images ? product.images[0] : product.image;
         
-        productCard.innerHTML = `
-            <img src="${imageSrc}" alt="${product.name}" class="camera-image">
-            <h3>${product.name}</h3>
-            <p class="price">$${product.pricePerDay} / day</p>
-        `;
+        // Create image element
+        const imgElement = document.createElement('img');
+        imgElement.className = 'camera-image';
+        imgElement.alt = product.name;
+        
+        // Use the handleImageError utility to load the image with retry capability
+        handleImageError(imgElement, imageSrc);
+        
+        // Create product name and price elements
+        const nameElement = document.createElement('h3');
+        nameElement.textContent = product.name;
+        
+        const priceElement = document.createElement('p');
+        priceElement.className = 'price';
+        priceElement.textContent = `LE ${product.pricePerDay} / day`;
+        
+        // Append all elements to the card
+        productCard.appendChild(imgElement);
+        productCard.appendChild(nameElement);
+        productCard.appendChild(priceElement);
         
         // Add click event to view product details
         productCard.addEventListener('click', () => {

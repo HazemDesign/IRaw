@@ -135,3 +135,21 @@
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 } 
+
+/* Extra small devices (phones under 
+375px) */
+@media (max-width: 
+375px) {
+    .top-header {
+        padding: 0.4rem 0.5rem;
+    }
+    
+    .logo {
+        width: 50px;
+    }
+    
+    .menu-toggle, 
+    .header-right {
+        font-size: 1.2rem;
+    }
+} 

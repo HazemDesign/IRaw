@@ -107,3 +107,52 @@
         margin: 0 auto 1.5rem;
     }
 } 
+
+/* Extra small devices (phones under 
+375px) */
+@media (max-width: 
+375px) {
+    .site-footer {
+        padding: 2rem 1rem 1rem;
+        margin-top: 2rem;
+    }
+    
+    .footer-container {
+        gap: 1.5rem;
+    }
+    
+    .footer-logo {
+        width: 80px;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-info p {
+        font-size: 0.8rem;
+        gap: 5px;
+    }
+    
+    .footer-info p i {
+        font-size: 0.9rem;
+    }
+    
+    .footer-social h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .social-icons {
+        gap: 0.8rem;
+    }
+    
+    .social-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        font-size: 0.7rem;
+    }
+} 

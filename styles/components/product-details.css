@@ -3,6 +3,7 @@
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
+    overflow: visible;
 }
 
 /* Product Layout */
@@ -12,10 +13,11 @@
     gap: 2rem;
     background-color: white;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     align-items: start;
     min-height: 600px;
+    margin-bottom: 2rem;
 }
 
 /* Product Gallery */
@@ -28,9 +30,9 @@
     background-color: #fcfcfc;
     min-height: 500px;
     position: sticky;
-    top: 2rem;
+    top: 4rem;
     border-right: 1px solid var(--color-grey-lighter);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .product-gallery {
@@ -47,22 +49,27 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
+    height: auto;
+    min-height: 300px;
+    overflow: visible;
 }
 
 .product-image {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 400px;
     object-fit: contain;
     width: 70%;
     transition: transform 0.3s ease;
     padding: 1rem;
 }
 
+/* Product Thumbnails */
 .product-thumbnails {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
     flex-wrap: wrap;
+    max-width: 100%;
 }
 
 .thumbnail {
@@ -185,8 +192,18 @@
 }
 
 .custom-duration-options {
-    padding-top: 0.5rem;
+    padding-top: 0;
     border-top: 1px solid var(--color-grey);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding-top 0.3s ease;
+}
+
+.custom-duration-options.active {
+    max-height: 200px;
+    opacity: 1;
+    padding-top: 0.5rem;
 }
 
 .form-group {
@@ -271,11 +288,12 @@
 
 /* Compatible Products Section */
 .compatible-products-section {
-    margin-top: 3rem;
-    padding: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: visible;
 }
 
 .compatible-products-section h2 {
@@ -287,10 +305,11 @@
 .compatible-scroll-container {
     position: relative;
     width: 100%;
-    padding: 0 10px;
+    overflow: visible;
 }
 
 .compatible-scroll-wrapper {
+    position: relative;
     width: 100%;
     overflow: hidden;
     padding: 0.5rem 0;
@@ -386,6 +405,7 @@
 @media (max-width: 992px) {
     .product-details {
         grid-template-columns: 1fr;
+        min-height: auto;
     }
     
     .product-image-container {
@@ -396,10 +416,11 @@
         position: relative;
         top: 0;
         min-height: auto;
-        padding: 1.5rem;
+        padding: 1.5rem 1.5rem 3rem;
         border-right: none;
         border-bottom: 1px solid var(--color-grey-lighter);
-        overflow: hidden;
+        overflow: visible;
+        margin-bottom: 0.5rem;
     }
     
     /* Move description back inside the product info for mobile */
@@ -424,6 +445,7 @@
         max-width: 100%;
         margin: 0 auto;
         flex-wrap: wrap;
+        margin-bottom: 1rem;
     }
     
     .thumbnail {
@@ -484,6 +506,7 @@
         padding: 0.5rem;
         gap: 1rem;
         scroll-snap-type: x mandatory;
+        margin: 0 -0.5rem;
     }
     
     .compatible-product-card {
@@ -502,11 +525,93 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 1rem 1rem 2.5rem;
+        min-height: auto;
+        overflow: visible;
+        position: static;
+        border-bottom: 1px solid var(--color-grey-lighter);
+        margin-bottom: 0.5rem;
     }
     
     .product-gallery {
-        max-width: 50%;
+        width: 90%;
+        max-width: 400px;
         margin: 0 auto;
+        overflow: visible;
+    }
+    
+    .main-image-container {
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+        margin-bottom: 0;
+        position: relative;
+        cursor: grab;
+    }
+    
+    /* Add swipe indicators */
+    .main-image-container::before,
+    .main-image-container::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-50%);
+        z-index: 2;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .main-image-container::before {
+        left: 10px;
+    }
+    
+    .main-image-container::after {
+        right: 10px;
+    }
+    
+    /* Add arrow icons inside the indicators */
+    .main-image-container::before {
+        content: '←';
+        font-size: 16px;
+        color: var(--color-dark);
+    }
+    
+    .main-image-container::after {
+        content: '→';
+        font-size: 16px;
+        color: var(--color-dark);
+    }
+    
+    /* Add swipe animation */
+    .product-image.swiping {
+        transition: transform 0.3s ease;
+    }
+    
+    /* Adjust image container padding since we no longer have thumbnails */
+    .product-image-container {
+        padding: 1rem 1rem 1.5rem;
+    }
+    
+    .product-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        padding: 0.5rem;
+    }
+    
+    .product-thumbnails {
+        display: none; /* Hide thumbnails on mobile */
     }
     
     .compatible-product-img {
@@ -560,15 +665,65 @@
     .scroll-right {
         right: -5px;
     }
+
+    .compatible-products-section,
+    .product-description-section {
+        margin-top: 1.5rem;
+        overflow: visible;
+    }
+
+    .thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+        border-width: 1px;
+    }
+
+    .product-info {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    /* Add swipe indicators for current position */
+    .swipe-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        z-index: 2;
+    }
+    
+    .swipe-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .swipe-indicator.active {
+        background-color: var(--color-primary);
+        transform: scale(1.2);
+    }
 }
 
 @media (max-width: 576px) {
     .product-details-container {
         margin: 1rem auto;
+        padding: 0 0.5rem;
+        overflow: visible;
+    }
+    
+    .product-details {
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        overflow: visible;
     }
     
     .product-info {
-        padding: 1.5rem;
+        padding: 1.5rem 1rem 1rem;
     }
     
     .product-title {
@@ -577,7 +732,6 @@
     
     .product-price {
         font-size: 1.25rem;
-        margin-bottom: 1.5rem;
     }
     
     .rental-options, .compatible-products-section, .product-description-section {
@@ -589,30 +743,135 @@
     }
     
     .rental-boxes {
-        grid-template-columns: repeat(3, 1fr);
+        gap: 0.3rem;
     }
     
     .compatible-product-card {
-        min-width: calc(50% - 0.5rem);
+        min-width: calc(70% - 0.5rem);
     }
     
     .compatible-product-img {
-        width: 85%;
-        padding: 0.5rem;
+        width: 90%;
     }
     
     .compatible-product-info h3 {
-        font-size: 0.9rem;
-        text-align: center;
+        font-size: 0.85rem;
     }
     
     .compatible-product-info p {
-        font-size: 0.8rem;
-        text-align: center;
+        font-size: 0.75rem;
     }
     
     .scroll-arrow {
         width: 30px;
         height: 30px;
+    }
+
+    /* Improve product image container for small screens */
+    .product-image-container {
+        padding: 0.75rem 0.5rem 1.5rem;
+    }
+
+    .product-gallery {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+    }
+
+    .main-image-container::before,
+    .main-image-container::after {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+
+    .product-image {
+        width: 100%;
+        max-height: 200px;
+        overflow: visible;
+    }
+
+    .product-thumbnails {
+        gap: 0.25rem;
+    }
+
+    .thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+
+    .compatible-products-section,
+    .product-description-section {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        overflow: visible;
+    }
+
+    .swipe-indicators {
+        bottom: 5px;
+        gap: 6px;
+    }
+    
+    .swipe-indicator {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+/* Add extra small device breakpoint */
+@media (max-width: 400px) {
+    .product-gallery {
+        width: 100%;
+        overflow: visible;
+    }
+
+    .main-image-container {
+        min-height: 180px;
+        overflow: visible;
+    }
+
+    .product-image {
+        width: 100%;
+        padding: 0;
+        max-height: 250px;
+    }
+    
+    .product-image-container {
+        padding: 0.5rem 0.5rem 2rem;
+        overflow: visible;
+    }
+    
+    .product-thumbnails {
+        gap: 0.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-title {
+        font-size: 1.3rem;
+    }
+
+    .rental-boxes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.2rem;
+    }
+
+    .rental-box label {
+        padding: 0.75rem 0.3rem;
+        font-size: 0.7rem;
+    }
+
+    .thumbnail {
+        width: 45px;
+        height: 45px;
+    }
+
+    .swipe-indicators {
+        bottom: 3px;
+        gap: 5px;
+    }
+    
+    .swipe-indicator {
+        width: 5px;
+        height: 5px;
     }
 } 

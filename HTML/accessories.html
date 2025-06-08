@@ -65,6 +65,8 @@
     <section class="products-section">
         <div class="filter-container">
             <h3 class="filter-title">Filters</h3>
+            
+            <!-- Desktop filters (dropdowns) -->
             <div class="filter-group">
                 <label>Category</label>
                 <select id="categoryFilter">
@@ -85,6 +87,29 @@
                     <option value="nameAsc">Name: A to Z</option>
                     <option value="nameDesc">Name: Z to A</option>
                 </select>
+            </div>
+            
+            <!-- Mobile filters (tags) -->
+            <div class="filter-tags">
+                <label>Category</label>
+                <div class="tag-container" id="categoryTags">
+                    <span class="filter-tag active" data-value="all">All</span>
+                    <span class="filter-tag" data-value="Tripod">Tripods</span>
+                    <span class="filter-tag" data-value="Gimbal">Gimbals</span>
+                    <span class="filter-tag" data-value="Light">Lighting</span>
+                    <span class="filter-tag" data-value="Memory">Cards</span>
+                    <span class="filter-tag" data-value="Battery">Batteries</span>
+                </div>
+                
+                <div class="tags-sort-container">
+                    <label>Sort:</label>
+                    <select id="mobileSortFilter">
+                        <option value="priceAsc">Price: Low to High</option>
+                        <option value="priceDesc">Price: High to Low</option>
+                        <option value="nameAsc">Name: A to Z</option>
+                        <option value="nameDesc">Name: Z to A</option>
+                    </select>
+                </div>
             </div>
         </div>
         
@@ -117,11 +142,20 @@
 
 <script type="module">
     import { accessories } from '../JS/database.js';
+    import { handleImageError } from '../JS/utils.js';
     
     document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('accessoriesContainer');
         const categoryFilter = document.getElementById('categoryFilter');
         const sortFilter = document.getElementById('sortFilter');
+        const mobileSortFilter = document.getElementById('mobileSortFilter');
+        const categoryTags = document.querySelectorAll('#categoryTags .filter-tag');
+        
+        // Current filter values
+        let currentFilters = {
+            category: 'all',
+            sort: 'priceAsc'
+        };
         
         function displayAccessories(filters = {}) {
             container.innerHTML = '';
@@ -157,35 +191,88 @@
                 const accessoryCard = document.createElement('div');
                 accessoryCard.className = 'camera-card';
                 
-                accessoryCard.innerHTML = `
-                    <img src="${accessory.image}" alt="${accessory.name}" class="camera-image">
-                    <h3>${accessory.name}</h3>
-                    <p class="price">$${accessory.pricePerDay} / day</p>
-                `;
+                // Create image element
+                const imgElement = document.createElement('img');
+                imgElement.className = 'camera-image';
+                imgElement.alt = accessory.name;
+                
+                // Use the handleImageError utility to load the image with retry capability
+                handleImageError(imgElement, accessory.image);
+                
+                // Create product name and price elements
+                const nameElement = document.createElement('h3');
+                nameElement.textContent = accessory.name;
+                
+                const priceElement = document.createElement('p');
+                priceElement.className = 'price';
+                priceElement.textContent = `LE ${accessory.pricePerDay} / day`;
+                
+                // Append all elements to the card
+                accessoryCard.appendChild(imgElement);
+                accessoryCard.appendChild(nameElement);
+                accessoryCard.appendChild(priceElement);
                 
                 accessoryCard.addEventListener('click', () => {
-                    window.location.href = `product-details.html?type=accessory&id=${index}`;
+                    // Find the original index in the accessories array
+                    const originalIndex = accessories.findIndex(item => item.name === accessory.name);
+                    window.location.href = `product-details.html?type=accessory&id=${originalIndex}`;
                 });
                 
                 container.appendChild(accessoryCard);
             });
         }
         
-        // Initialize display
-        displayAccessories();
-        
-        // Add event listeners for filters
-        categoryFilter.addEventListener('change', () => {
-            displayAccessories({
-                category: categoryFilter.value,
-                sort: sortFilter.value
+        // Sync filters between desktop and mobile
+        function syncFilters() {
+            // Sync desktop to mobile
+            mobileSortFilter.value = sortFilter.value;
+            
+            // Update tag active states
+            categoryTags.forEach(tag => {
+                if(tag.dataset.value === currentFilters.category) {
+                    tag.classList.add('active');
+                } else {
+                    tag.classList.remove('active');
+                }
             });
+        }
+        
+        // Initialize display
+        displayAccessories(currentFilters);
+        
+        // Add event listeners for desktop filters
+        categoryFilter.addEventListener('change', () => {
+            currentFilters.category = categoryFilter.value;
+            syncFilters();
+            displayAccessories(currentFilters);
         });
         
         sortFilter.addEventListener('change', () => {
-            displayAccessories({
-                category: categoryFilter.value,
-                sort: sortFilter.value
+            currentFilters.sort = sortFilter.value;
+            syncFilters();
+            displayAccessories(currentFilters);
+        });
+        
+        // Add event listeners for mobile filters
+        mobileSortFilter.addEventListener('change', () => {
+            currentFilters.sort = mobileSortFilter.value;
+            sortFilter.value = mobileSortFilter.value; // Sync to desktop
+            displayAccessories(currentFilters);
+        });
+        
+        // Add event listeners for filter tags
+        categoryTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Update active state visually
+                categoryTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                
+                // Update filter and sync with desktop
+                currentFilters.category = tag.dataset.value;
+                categoryFilter.value = currentFilters.category;
+                
+                // Apply filters
+                displayAccessories(currentFilters);
             });
         });
     });

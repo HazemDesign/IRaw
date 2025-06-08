@@ -185,4 +185,49 @@
     .category-info h3 {
         font-size: 1rem;
     }
+}
+
+/* Extra small devices (phones under 
+375px) */
+@media (max-width: 
+375px) {
+    .section-title {
+        margin: 1.5rem 0 1rem;
+        font-size: 1.3rem;
+    }
+    
+    .section-title::after {
+        width: 40px;
+        height: 2px;
+    }
+    
+    .category-section {
+        padding: 0 0.5rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .category-container {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .category-card {
+        min-width: 110px;
+        max-width: calc(50% - 0.25rem);
+        border-radius: 8px;
+    }
+    
+    .category-img-container {
+        height: 90px;
+        padding: 0.3rem;
+    }
+    
+    .category-info {
+        padding: 0.5rem 0.3rem;
+    }
+    
+    .category-info h3 {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
 } 

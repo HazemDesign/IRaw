@@ -95,6 +95,8 @@
     <section class="products-section">
         <div class="filter-container">
             <h3 class="filter-title">Filters</h3>
+            
+            <!-- Desktop filters (dropdowns) -->
             <div class="filter-group">
                 <label>Brand</label>
                 <select id="brandFilter">
@@ -115,6 +117,29 @@
                     <option value="nameAsc">Name: A to Z</option>
                     <option value="nameDesc">Name: Z to A</option>
                 </select>
+            </div>
+            
+            <!-- Mobile filters (tags) -->
+            <div class="filter-tags">
+                <label>Brand</label>
+                <div class="tag-container" id="brandTags">
+                    <span class="filter-tag active" data-value="all">All Brands</span>
+                    <span class="filter-tag" data-value="Canon">Canon</span>
+                    <span class="filter-tag" data-value="Sony">Sony</span>
+                    <span class="filter-tag" data-value="Nikon">Nikon</span>
+                    <span class="filter-tag" data-value="Fujifilm">Fujifilm</span>
+                    <span class="filter-tag" data-value="Panasonic">Panasonic</span>
+                </div>
+                
+                <div class="tags-sort-container">
+                    <label>Sort:</label>
+                    <select id="mobileSortFilter">
+                        <option value="priceAsc">Price: Low to High</option>
+                        <option value="priceDesc">Price: High to Low</option>
+                        <option value="nameAsc">Name: A to Z</option>
+                        <option value="nameDesc">Name: Z to A</option>
+                    </select>
+                </div>
             </div>
         </div>
         
@@ -146,11 +171,20 @@
   </footer>
 <script type="module">
     import { lenses } from '../JS/database.js';
+    import { handleImageError } from '../JS/utils.js';
     
     document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('lensesContainer');
         const brandFilter = document.getElementById('brandFilter');
         const sortFilter = document.getElementById('sortFilter');
+        const mobileSortFilter = document.getElementById('mobileSortFilter');
+        const brandTags = document.querySelectorAll('#brandTags .filter-tag');
+        
+        // Current filter values
+        let currentFilters = {
+            brand: 'all',
+            sort: 'priceAsc'
+        };
         
         function displayLenses(filters = {}) {
             container.innerHTML = '';
@@ -186,35 +220,88 @@
                 const lensCard = document.createElement('div');
                 lensCard.className = 'camera-card';
                 
-                lensCard.innerHTML = `
-                    <img src="${lens.image}" alt="${lens.name}" class="camera-image">
-                    <h3>${lens.name}</h3>
-                    <p class="price">$${lens.pricePerDay} per day</p>
-                `;
+                // Create image element
+                const imgElement = document.createElement('img');
+                imgElement.className = 'camera-image';
+                imgElement.alt = lens.name;
+                
+                // Use the handleImageError utility to load the image with retry capability
+                handleImageError(imgElement, lens.image);
+                
+                // Create product name and price elements
+                const nameElement = document.createElement('h3');
+                nameElement.textContent = lens.name;
+                
+                const priceElement = document.createElement('p');
+                priceElement.className = 'price';
+                priceElement.textContent = `LE ${lens.pricePerDay} / day`;
+                
+                // Append all elements to the card
+                lensCard.appendChild(imgElement);
+                lensCard.appendChild(nameElement);
+                lensCard.appendChild(priceElement);
                 
                 lensCard.addEventListener('click', () => {
-                    window.location.href = `product-details.html?type=lens&id=${index}`;
+                    // Find the original index in the lenses array
+                    const originalIndex = lenses.findIndex(item => item.name === lens.name);
+                    window.location.href = `product-details.html?type=lens&id=${originalIndex}`;
                 });
                 
                 container.appendChild(lensCard);
             });
         }
         
-        // Initialize display
-        displayLenses();
-        
-        // Add event listeners for filters
-        brandFilter.addEventListener('change', () => {
-            displayLenses({
-                brand: brandFilter.value,
-                sort: sortFilter.value
+        // Sync filters between desktop and mobile
+        function syncFilters() {
+            // Sync desktop to mobile
+            mobileSortFilter.value = sortFilter.value;
+            
+            // Update tag active states
+            brandTags.forEach(tag => {
+                if(tag.dataset.value === currentFilters.brand) {
+                    tag.classList.add('active');
+                } else {
+                    tag.classList.remove('active');
+                }
             });
+        }
+        
+        // Initialize display
+        displayLenses(currentFilters);
+        
+        // Add event listeners for desktop filters
+        brandFilter.addEventListener('change', () => {
+            currentFilters.brand = brandFilter.value;
+            syncFilters();
+            displayLenses(currentFilters);
         });
         
         sortFilter.addEventListener('change', () => {
-            displayLenses({
-                brand: brandFilter.value,
-                sort: sortFilter.value
+            currentFilters.sort = sortFilter.value;
+            syncFilters();
+            displayLenses(currentFilters);
+        });
+        
+        // Add event listeners for mobile filters
+        mobileSortFilter.addEventListener('change', () => {
+            currentFilters.sort = mobileSortFilter.value;
+            sortFilter.value = mobileSortFilter.value; // Sync to desktop
+            displayLenses(currentFilters);
+        });
+        
+        // Add event listeners for filter tags
+        brandTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Update active state visually
+                brandTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                
+                // Update filter and sync with desktop
+                currentFilters.brand = tag.dataset.value;
+                brandFilter.value = currentFilters.brand;
+                
+                // Apply filters
+                displayLenses(currentFilters);
             });
         });
     });
