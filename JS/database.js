@@ -93,8 +93,8 @@ const cameras = [
       pricePerDay: 400,
       images: [
         "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_ilce_7m3_alpha_a7_iii_mirrorless_1519677934_1394217.jpg",
-        "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_ilce_7m3_alpha_a7_iii_mirrorless_1519677934_1394219.jpg",
-        "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_ilce_7m3_alpha_a7_iii_mirrorless_1519677934_1394220.jpg"
+        "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://static.bhphoto.com/images/multiple_images/images500x500/1519677919_IMG_949926.jpg",
+        "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://static.bhphoto.com/images/multiple_images/images500x500/1519677919_IMG_949927.jpg"
       ],
       features: [
         "24.2MP Full-Frame Exmor R BSI Sensor",

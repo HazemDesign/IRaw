@@ -25,7 +25,7 @@
 /* Camera cards inside product showcase need specific styling */
 .product-showcase .camera-card {
     min-width: 280px;
-    max-width: 350px;
+    max-width: 10px;
     scroll-snap-align: start;
     flex: 0 0 auto;
     padding: 1rem;
@@ -38,14 +38,14 @@
 .product-showcase .camera-card .camera-image {
     height: 180px;
     width: auto;
-    max-width: 100%;
+    /* max-width: 100%; */
     object-fit: contain;
 }
 
 /* Keep the original product-card style for backward compatibility */
 .product-card {
     min-width: 280px;
-    max-width: 350px;
+    max-width: 10px;
     scroll-snap-align: start;
     background-color: white;
     border-radius: 12px;
@@ -141,7 +141,7 @@
     .product-showcase .camera-card,
     .product-card {
         min-width: 220px;
-        max-width: 250px;
+        max-width: 10px;
     }
     
     .product-showcase .camera-card {
@@ -174,7 +174,7 @@
     .product-showcase .camera-card,
     .product-card {
         min-width: 180px;
-        max-width: 250px;
+        max-width: 10px;
     }
     
     .product-showcase .camera-card {
@@ -211,7 +211,7 @@
     .product-showcase .camera-card,
     .product-card {
         min-width: 140px;
-        max-width: 200px;
+        max-width: 10px;
     }
     
     .product-showcase .camera-card {
